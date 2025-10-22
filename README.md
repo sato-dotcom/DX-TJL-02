@@ -77,15 +77,20 @@ sDX-TJL/
 
 ## 🚀 セットアップ
 
-# クローン
-git clone https://github.com/sato-dotcom/DX-TJL.git
-cd DX-TJL
+1. このリポジトリを clone
+git clone https://github.com/sato-dotcom/DX-TJL-02.git
+cd DX-TJL-02
 
-# 依存関係インストール（例: Node.js 環境の場合）
-npm install
+2. `.env.example` をコピーして `.env` を作成
 
-# 開発サーバ起動
-npm start
+3. Firebase APIキーなどを設定
+
+4. 依存関係インストール（例: Node.js 環境の場合）
+- npm install
+
+
+5. アプリ起動
+- npm run dev
 
 ```
 
