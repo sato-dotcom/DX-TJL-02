@@ -4,12 +4,12 @@ import { getAuth } from "firebase/auth";
 
 // NOTE: This configuration is for the user's existing Firebase project.
 const firebaseConfig = {
-  apiKey: "AIzaSyCAnRt7rKpHwlEaQtfco-Mr4ZgVPiBKMmU",
-  authDomain: "dx-tjl-honsya.firebaseapp.com",
-  projectId: "dx-tjl-honsya",
-  storageBucket: "dx-tjl-honsya.appspot.com",
-  messagingSenderId: "62684255767",
-  appId: "1:62684255767:web:e17ae7af4db528a9edee52"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
