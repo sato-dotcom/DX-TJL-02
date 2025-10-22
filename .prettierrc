@@ -1,0 +1,7 @@
+{
+  "semi": true,              // 文末にセミコロンを付ける
+  "singleQuote": true,       // 文字列はシングルクォート
+  "tabWidth": 2,             // インデントはスペース2個
+  "trailingComma": "es5",    // 配列やオブジェクトの末尾にカンマを付ける（ES5互換）
+  "printWidth": 100          // 1行の最大文字数
+}
