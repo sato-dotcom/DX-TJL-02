@@ -274,5 +274,89 @@ Copy
 
 TBD（未設定）
 
-開発環境テスト中です。
 
+
+
+## 📘 資格マスタ設計方針（README 追記用ドラフト）
+
+### 🎯 目的
+
+- 社員の資格取得状況を一元管理するための「資格マスタ」を定義する
+    
+- 旧制度・新制度の両方に対応し、制度改正や経過措置にも柔軟に対応できるようにする
+    
+- 将来的に社員データ・資産管理（車両・重機・機材）とリンクさせ、人員配置や資格更新管理に活用する
+    
+
+### 🗂️ データ構造の基本方針
+
+- コレクション名: `qualification_master`
+    
+- 各資格を 1 ドキュメントとして管理
+    
+- **旧制度 (old)** と **新制度 (new)** を `levels` 配列で並列に保持
+    
+- 制度改正の経過措置は `transitionPeriod` で表現
+    
+
+### 📑 ドキュメント例
+
+#### 1級土木施工管理技士
+
+json
+
+コピー
+
+```
+{
+  "id": "civil_construction_1",
+  "name": "1級土木施工管理技士",
+  "category": "civil",
+  "levels": [
+    {
+      "system": "old",
+      "educationRequirements": {
+        "university_designated": { "years": 3 },
+        "college_designated": { "years": 5 },
+        "highschool_designated": { "years": 10 }
+      },
+      "supervisoryExperience": 1,
+      "notes": "学歴に応じて必要な実務経験年数が異なる。指導監督的実務経験1年以上を含む。"
+    },
+    {
+      "system": "new",
+      "firstExam": { "age": 19 },
+      "secondExam": {
+        "experienceYears": 5,
+        "specialExperienceYears": 3
+      },
+      "transitionPeriod": { "from": 2024, "to": 2029 },
+      "notes": "第一次検定は年齢要件のみ。第二次検定は合格後の実務経験年数で判定。"
+    }
+  ]
+}
+```
+
+Copy
+
+### 🔑 設計のポイント
+
+- **旧制度と新制度を両方保持** → 過去の社員データも将来の受験者も同じ枠組みで管理可能
+    
+- **教育要件・経験年数を柔軟に表現** → 学歴や学科による差異を `educationRequirements` に保持
+    
+- **経過措置を transitionPeriod で管理** → 制度改正の移行期を明示
+    
+- **notes フィールド**で制度の細かい条件や例外を補足
+    
+
+### 🚀 将来の拡張
+
+- `employee_qualifications` とリンクして「資格進捗（planned, in\_progress, acquired, expired）」を管理
+    
+- `assets` コレクションと関連付けて「必要資格を持つ社員だけが利用可能な資産」を判定
+    
+- 有効期限付き資格（例: 自動車免許、技能講習）にも対応可能
+    
+
+👉 この方針を
